@@ -3,6 +3,8 @@ import {Observable} from 'rxjs';
 import {Tag} from '../models/tag.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {API_CONFIGURATION} from '../../app/config/api.config';
+import {Burly} from 'kb-burly';
+import {Tags} from '../models/tags.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,24 @@ export class TagsService {
 
   getTag(fromURL: string): Observable<Tag> {
     return this.httpClient.get<Tag>(fromURL, {
+      headers: this.getHeaders()
+    });
+  }
+
+  getTags(orderBy?: string, descending?: boolean, search?: string): Observable<Tags> {
+    let ordering = null;
+
+    if (orderBy) {
+      ordering = `${descending ? '-' : ''}${orderBy}`
+    }
+
+    const url = Burly(this.apiConfiguration.url + '/api/tags/').addParam('format', 'json', true)
+      .addParam('ordering', ordering)
+      .addParam('search', search)
+      .get;
+
+
+    return this.httpClient.get<Tags>(url, {
       headers: this.getHeaders()
     });
   }

@@ -17,6 +17,12 @@ $app-theme-name: 'dark';
     box-shadow: map-get($app-sidevar-side, $app-theme-name);
   }
 
+  // TOOLBAR
+  .mat-toolbar.mat-primary {
+    background: rgb(34,193,195)!important;
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(45,253,135,1) 100%)!important;
+  }
+
   // TABS
   .mat-tab-group {
     box-shadow: none !important;
@@ -140,10 +146,6 @@ $body-1: mat-typography-level(1rem, 1.15rem, 500));
     }
   }
 
-  #main-footer {
-    border-top: 1px solid rgba(black, 0.12);
-    background-color: map-get($app-footer, $app-theme-name);
-  }
 
   // change color of buttons selects (like current language)
   button.mat-menu-item {

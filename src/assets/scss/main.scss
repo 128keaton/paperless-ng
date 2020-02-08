@@ -294,7 +294,7 @@ mat-icon {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 56px;
+  bottom: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.15);
   z-index: 1;
@@ -314,4 +314,16 @@ mat-sidenav {
 
 .mat-tab-body-content {
   overflow: hidden!important;
+}
+
+mat-card.full-height {
+  height: calc(100vh - 150px);
+}
+
+mat-card-actions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  padding-top: 25px;
 }

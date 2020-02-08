@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {DocumentsService} from '../../../api/services/documents.service';
-import {forkJoin, fromEvent, merge, Observable, of, ReplaySubject, zip} from 'rxjs';
+import {forkJoin, fromEvent, merge, Observable, of} from 'rxjs';
 import {Documents} from '../../../api/models/documents.model';
 import {Document} from '../../../api/models/document.model';
 import {MatSort} from '@angular/material/sort';
@@ -10,11 +10,13 @@ import {TagsService} from '../../../api/services/tags.service';
 import {Tag} from '../../../api/models/tag.model';
 import {Router} from '@angular/router';
 import {PageTitleService} from '../../shared/services/page-title.service';
+import {rowsAnimation} from '../../shared/animations/table.anim';
 
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.scss']
+  styleUrls: ['./documents.component.scss'],
+  animations: [rowsAnimation],
 })
 export class DocumentsComponent implements AfterViewInit {
   documents: Document[] = [];

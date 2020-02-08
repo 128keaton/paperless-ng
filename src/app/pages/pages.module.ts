@@ -19,12 +19,14 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
+import { TagsComponent } from './tags/tags.component';
 
 
 @NgModule({
   declarations: [
     DocumentsComponent,
     DocumentComponent,
+    TagsComponent,
   ],
   imports: [
     CommonModule,

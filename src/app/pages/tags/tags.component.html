@@ -1,0 +1,51 @@
+<mat-card class="full-height mat-elevation-z0">
+  <mat-card-content>
+    <div class="loading-shade"
+         *ngIf="loadingTags || didError">
+      <mat-spinner *ngIf="loadingTags"></mat-spinner>
+      <div class="error" *ngIf="didError">
+        Unable to fetch tags
+      </div>
+    </div>
+    <div class="tags-search-container">
+      <mat-form-field>
+        <input matInput placeholder="Search" autofill="off" autocomplete="off" #search>
+      </mat-form-field>
+    </div>
+    <div class="tags-table-container">
+
+      <table mat-table [dataSource]="tags" class="tags-table" matSort matSortActive="name"
+             matSortDisableClear matSortDirection="desc">
+
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let row">{{row.name}}</td>
+        </ng-container>
+
+        <!-- Slug Column -->
+        <ng-container matColumnDef="slug">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            Slug
+          </th>
+          <td mat-cell *matCellDef="let row">{{row['slug']}}</td>
+        </ng-container>
+
+        <!-- Insensitive Column -->
+        <ng-container matColumnDef="insensitive">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            Insensitive
+          </th>
+          <td mat-cell *matCellDef="let row">{{row['insensitive'] === 1 ? 'Yes' : 'No'}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row [@rowsAnimation]="" *matRowDef="let row; columns: columns;"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-paginator [length]="totalTags" [pageSize]="30"></mat-paginator>
+  </mat-card-actions>
+</mat-card>

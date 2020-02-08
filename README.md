@@ -1,5 +1,7 @@
 # Paperless NG
-A frontend for Paperless
+A frontend for [Paperless](https://github.com/the-paperless-project/paperless)
+
+
 ![Screenshot](https://raw.githubusercontent.com/128keaton/paperless-ng/master/screenshot.png)
 
 ## Configuration

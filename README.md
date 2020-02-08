@@ -1,5 +1,6 @@
 # Paperless NG
 A frontend for Paperless
+![Screenshot](https://raw.githubusercontent.com/128keaton/paperless-ng/master/screenshot.png)
 
 ## Configuration
 1. Make sure that your have enabled CORS on the Paperless server:

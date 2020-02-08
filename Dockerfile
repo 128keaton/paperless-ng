@@ -1,5 +1,5 @@
 #############
-### build ###
+### Build ###
 #############
 
 # base image
@@ -23,17 +23,8 @@ COPY . /app
 RUN npm run build
 
 ############
-### prod ###
+### Run ###
 ############
 
-# base image
-FROM nginx:1.16.0-alpine
-
-# copy artifact build from the 'build environment'
+FROM nginx:1.17.1-alpine
 COPY --from=build /app/dist /usr/share/nginx/html
-
-# expose port 80
-EXPOSE 80
-
-# run nginx
-CMD ["nginx", "-g", "daemon off;"]

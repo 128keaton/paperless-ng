@@ -1,0 +1,8 @@
+<mat-accordion class="navigation">
+  <mat-list>
+    <a mat-list-item *ngFor="let menu of menuItems" [routerLink]="menu.path" (click)="toggleActive(menu.path)" [class.active]="active === menu.path">
+      <mat-icon *ngIf="menu.icon" matListIcon>{{ menu.icon }}</mat-icon>
+      <span matLine>{{ menu.title }}</span>
+    </a>
+  </mat-list>
+</mat-accordion>

@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-header>
+    <div matCardAvatar class="back-wrapper">
+      <mat-icon (click)="back()" matTooltip="Back">keyboard_arrow_left</mat-icon>
+    </div>
+    <mat-card-title>{{documentTitle|async}}</mat-card-title>
+    <mat-card-subtitle *ngIf="(document|async)">Added: {{document.value.added|date}}</mat-card-subtitle>
+    <div class="type-wrapper" *ngIf="document|async">
+      <button mat-flat-button color="warn">{{document.value.file_type|uppercase}}</button>
+    </div>
+    <div class="download-wrapper">
+      <mat-icon (click)="download(document.value.download_url)" matTooltip="Download">cloud_download</mat-icon>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="loading-shade" *ngIf="isLoading || didError">
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <div class="error" *ngIf="didError">
+        Unable to fetch document
+      </div>
+    </div>
+    <div class="document" *ngIf="document|async">
+      <mat-tab-group>
+        <mat-tab label="Information">
+          <mat-card class="information">
+            <div class="section">
+              <mat-label>Thumbnail</mat-label>
+              <img [src]="thumbnail(document.value.thumbnail_url)" [alt]="document.value.title">
+            </div>
+
+          <div class="information section subsection">
+            <div class="section">
+              <mat-label>Created</mat-label>
+              <h4>{{document.value.created | date}}</h4>
+            </div>
+            <div class="section">
+              <mat-label>Updated</mat-label>
+              <h4>{{document.value.modified | date}}</h4>
+            </div>
+            <div class="section">
+              <mat-label>Added</mat-label>
+              <h4>{{document.value.added | date}}</h4>
+            </div>
+            <div class="section">
+              <mat-label>File Name</mat-label>
+              <pre>{{document.value.file_name }}</pre>
+            </div>
+            <div class="section">
+              <mat-label>Checksum</mat-label>
+              <pre>{{document.value.checksum }}</pre>
+            </div>
+            <div class="section">
+              <mat-label>Tags</mat-label>
+              <mat-chip-list>
+                <mat-chip *ngFor="let tag of documentTags|async">{{tag.name}}</mat-chip>
+              </mat-chip-list>
+            </div>
+          </div>
+          </mat-card>
+        </mat-tab>
+        <mat-tab label="Content">
+          <mat-card class="content">
+            <mat-label>Content</mat-label>
+            <div class="content-wrapper">
+              <pre>{{document.value.content}}</pre>
+            </div>
+          </mat-card>
+        </mat-tab>
+      </mat-tab-group>
+
+    </div>
+  </mat-card-content>
+</mat-card>

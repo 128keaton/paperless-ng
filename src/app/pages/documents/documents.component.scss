@@ -1,0 +1,40 @@
+.documents-table-container {
+  width: 100%;
+
+  .documents-table {
+    width: 100%;
+    img {
+      width: 100%;
+      padding: 0.5rem;
+    }
+
+    .thumbnail-wrapper {
+      height: 120px;
+      width: 60px;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.documents-search-container {
+  width: 100%;
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+tr {
+  cursor: pointer;
+}
+
+mat-chip {
+  transition: opacity 500ms ease-in-out;
+  opacity: 1;
+}
+
+mat-chip.hidden {
+  opacity: 0;
+}

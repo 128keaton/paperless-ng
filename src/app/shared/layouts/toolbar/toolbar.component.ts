@@ -11,8 +11,6 @@ import {API_CONFIGURATION} from '../../../config/api.config';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent  {
-  private toggleMenu: boolean;
-
   @Input() toggleMenu$: EventEmitter<boolean> | boolean;
   @Input() sidenav: MatSidenav;
 
@@ -24,14 +22,5 @@ export class ToolbarComponent  {
     this.title = pageTitleService.$pageTitle;
     this.username = API_CONFIGURATION.username;
     this.host = API_CONFIGURATION.url.replace('http://', '').replace('https://', '');
-  }
-
-  onToggleMenu(): void {
-    this.toggleMenu = !this.toggleMenu;
-    this.sidenav.toggle().then();
-
-    if (this.toggleMenu$ instanceof EventEmitter) {
-      this.toggleMenu$.emit(this.toggleMenu);
-    }
   }
 }

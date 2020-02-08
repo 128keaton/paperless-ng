@@ -7,7 +7,7 @@ A frontend for [Paperless](https://github.com/the-paperless-project/paperless)
 ## Configuration
 1. Make sure that your have enabled CORS on the Paperless server:
     ```
-    PAPERLESS_CORS_ALLOWED_HOSTS=localhost:8080,localhost:4200
+    PAPERLESS_CORS_ALLOWED_HOSTS=localhost:8888,localhost:4200
     ```
 
 2. Create a `.env` file with your Paperless URL, username, and password:

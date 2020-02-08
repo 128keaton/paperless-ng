@@ -21,3 +21,4 @@ A frontend for [Paperless](https://github.com/the-paperless-project/paperless)
     ```bash
     $ docker-compose up -d --build
     ```
+
